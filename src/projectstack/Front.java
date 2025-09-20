@@ -4,6 +4,9 @@
  */
 package projectstack;
 
+import java.awt.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Windows10
@@ -17,6 +20,7 @@ public class Front extends javax.swing.JFrame {
      */
     public Front() {
         initComponents();
+        this.getContentPane().setBackground(new Color(98, 149, 150));
     }
 
     /**
@@ -38,9 +42,19 @@ public class Front extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Sriracha", 1, 28)); // NOI18N
         jButton1.setText("START");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Sriracha", 0, 12)); // NOI18N
         jButton2.setText("Credit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,6 +85,18 @@ public class Front extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            Create move = new Create();  // สร้างหน้าฟอร์มใหม่
+            move.setVisible(true);     // แสดง Form2
+            this.dispose(); 
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(this, "Created by..Krittaya Tantichaiyakul\nID student : 6705500269\n"
+                + "Present to Asst.Prof.DR.Chouvalit Khancome ");
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
