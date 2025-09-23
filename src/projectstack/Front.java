@@ -6,6 +6,8 @@ package projectstack;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -21,6 +23,8 @@ public class Front extends javax.swing.JFrame {
     public Front() {
         initComponents();
         this.getContentPane().setBackground(new Color(98, 149, 150));
+        UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
+        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 14));
     }
 
     /**
