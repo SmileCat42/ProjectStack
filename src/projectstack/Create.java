@@ -44,7 +44,7 @@ public class Create extends javax.swing.JFrame {
      //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
         for (int i = 0; i <= TOP1; i++) {
             System.out.print(STACK1[i] + ",");
-            jTable1.setValueAt(STACK1[i], ((size-1)-TOP1), 0);
+            jTable1.setValueAt(STACK1[i], ((size-1)-i), 0);
         }
     }
  public  void clearDatainStack(int TOP) {       
@@ -68,22 +68,22 @@ public class Create extends javax.swing.JFrame {
      //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
         for (int i = 0; i <= TOP3; i++) {
             System.out.print(STACK3[i] + ",");
-            jTable3.setValueAt(STACK3[i], ((size-1)-TOP3), 0);
+            jTable3.setValueAt(STACK3[i], ((size-1)-i), 0);
         }
     }
     public Create() {
         initComponents();
         jTable1.setRowHeight(30);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
-        jTable1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+        jTable1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 18));
         
         jTable2.setRowHeight(30);
         jTable2.getColumnModel().getColumn(0).setPreferredWidth(200);
-        jTable2.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+        jTable2.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 18));
 
         jTable3.setRowHeight(30);
         jTable3.getColumnModel().getColumn(0).setPreferredWidth(200);
-        jTable3.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+        jTable3.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 18));
         
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // แนวนอน
@@ -126,7 +126,7 @@ public class Create extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,6 +141,7 @@ public class Create extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jTable2.setForeground(new java.awt.Color(51, 153, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,18 +192,43 @@ public class Create extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton5.setText(">>");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton6.setText("<");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton7.setText(">");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton8.setText("<<");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton9.setText("<");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -433,7 +459,113 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        System.out.println("Move data from STACK1 to STACK2");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if(TOP1==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                System.out.println("Stack empty");
+                return;
+        }
+        int K=TOP1;
+        for(int i=0;i<=K;i++){
+            TOP3++;
+            STACK3[TOP3]=STACK1[TOP1];
+            jTable1.setValueAt("", ((size-1)-TOP1), 0);
+            TOP1--;
+        }
+        showDatainStack3();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Move data from STACK1 to STACK3");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if(TOP2==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                System.out.println("Stack empty");
+                return;
+        }
+        int K=TOP2;
+        for(int i=0;i<=K;i++){
+            TOP1++;
+            STACK1[TOP1]=STACK2[TOP2];
+            jTable2.setValueAt("", ((size-1)-TOP2), 0);
+            TOP2--;
+        }
+        showDatainStack();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Move data from STACK2 to STACK1");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if(TOP2==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                System.out.println("Stack empty");
+                return;
+        }
+        int K=TOP2;
+        for(int i=0;i<=K;i++){
+            TOP3++;
+            STACK3[TOP3]=STACK2[TOP2];
+            jTable2.setValueAt("", ((size-1)-TOP2), 0);
+            TOP2--;
+        }
+        showDatainStack3();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Move data from STACK2 to STACK3");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        if(TOP3==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                System.out.println("Stack empty");
+                return;
+        }
+        int K=TOP3;
+        for(int i=0;i<=K;i++){
+            TOP1++;
+            STACK1[TOP1]=STACK3[TOP3];
+            jTable3.setValueAt("", ((size-1)-TOP3), 0);
+            TOP3--;
+        }
+        showDatainStack();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Move data from STACK3 to STACK1");
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if(TOP3==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                System.out.println("Stack empty");
+                return;
+        }
+        int K=TOP3;
+        for(int i=0;i<=K;i++){
+            TOP2++;
+            STACK2[TOP2]=STACK3[TOP3];
+            jTable3.setValueAt("", ((size-1)-TOP3), 0);
+            TOP3--;
+        }
+        showDatainStack2();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Move data from STACK3 to STACK2");
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
