@@ -3,20 +3,73 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projectstack;
+import javax.swing.*;
+import java.awt.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 
-/**
- *
- * @author Windows10
- */
 public class Create extends javax.swing.JFrame {
     
+    int size = 1;
+    int TOP1 = -1, MAXSTK1, STACK1[]= new int[size], ITEM;
+    int TOP2 = -1, MAXSTK2, STACK2[];
+    int TOP3 = -1, MAXSTK3, STACK3[];
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create.class.getName());
 
-    /**
-     * Creates new form Create
-     */
+        public  void PUSH(int item) {
+        if (TOP1 == MAXSTK1-1) {
+            System.out.println("OVERFLOW");
+        } else {
+          TOP1++;     
+           STACK1[TOP1] = item;
+        System.out.println("PUSH :" + item + "  OK.");
+  //      jTable1.setValueAt(STACK[TOP], (9-TOP), 0);
+        }
+    }
+//------------------------------------
+    public  void POP(){
+    if(TOP1==-1) 
+      System.out.println("UNDERFLOW");
+    else
+    {
+       ITEM=STACK1[TOP1];
+       TOP1--;
+    }
+    System.out.println("Pop Data: "+ITEM);
+ }
+    public  void showDatainStack() {
+        
+        System.out.println();
+        System.out.print("Stack:");
+     //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
+        for (int i = 0; i <= TOP1; i++) {
+            System.out.print(STACK1[i] + ",");
+            jTable1.setValueAt(STACK1[i], ((size-1)-TOP1), 0);
+        }
+    }
+    public  void clearDatainStack() {       
+        for (int i = 0; i <= (TOP1+1); i++) {
+            jTable1.setValueAt("", ((size-1)-TOP1), 0);
+        }
+    }
     public Create() {
         initComponents();
+        jTable1.setRowHeight(30);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTable1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+        
+        jTable2.setRowHeight(30);
+        jTable2.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTable2.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+
+        jTable3.setRowHeight(30);
+        jTable3.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTable3.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 16));
+        
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // แนวนอน
+        centerRenderer.setVerticalAlignment(SwingConstants.CENTER);   // แนวตั้ง
+        
     }
 
     /**
@@ -28,47 +81,285 @@ public class Create extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Title 1"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jButton2.setText("PUSH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("POP");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("TOP1 = -1");
+
+        jLabel3.setText("TOP2 = -1");
+
+        jLabel4.setText("TOP3 = -1");
+
+        jLabel5.setText("MAXSTACK = ");
+
+        jLabel6.setText("MAXSTACK = ");
+
+        jLabel7.setText("MAXSTACK = ");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5))
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(90, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel4))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 51));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 51));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/s1 (3).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 405, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลข จำนวนช่องของ Stack\n(ระบุ 1-7 ช่อง)");
+        System.out.println("Pls take number from 1-7 for stack");
+       int input = Integer.parseInt(inputStr);
+       if(inputStr!=null){
+           if(input <1 || input >7){
+                JOptionPane.showMessageDialog(null, "ระบุตัวเลข 1-7 ค่าา ");
+                System.out.println("Pls take number from 1-7 for stack");
+                 return;
+           }
+           DefaultTableModel model1 = new DefaultTableModel(new Object[]{"STACK1"}, 0);
+                 jTable1.setModel(model1);
+                  DefaultTableModel model2 = new DefaultTableModel(new Object[]{"STACK2"}, 0);
+                 jTable2.setModel(model2);
+                  DefaultTableModel model3 = new DefaultTableModel(new Object[]{"STACK3"}, 0);
+                 jTable3.setModel(model3);
+                for (int i = 0; i < input; i++) {
+                    model1.addRow(new Object[]{""});
+                    model2.addRow(new Object[]{""});
+                    model3.addRow(new Object[]{""});
+            }
+       }else{
+           System.out.println("Pls take number from 1-7 for stack");
+           return;
+       }
+       
+       TOP1=-1;
+        size=MAXSTK1=MAXSTK2=MAXSTK3=input;
+        
+        STACK1= new int[size];
+        jLabel5.setText("MAXSTACK1 = "+MAXSTK1);
+        jLabel6.setText("MAXSTACK2 = "+MAXSTK2);
+        jLabel7.setText("MAXSTACK3 = "+MAXSTK3);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลขเพื่อใส่ค่าลงไป");
+        System.out.println("Pls take number push in stack");
+        int value = Integer.parseInt(inputStr);
+        if(TOP1!=-1){
+            if(value>=STACK1[TOP1]){
+                JOptionPane.showMessageDialog(null, "กรุณาใส่เลขที่น้อยลงกว่าเดิม ");
+                System.out.println("Pls input lower number");
+                return;
+            }
+        }
+        if (TOP1 == MAXSTK1-1) {
+            JOptionPane.showMessageDialog(null, "STACK เต็มค่ะ ");
+        }
+        PUSH(value);
+        showDatainStack();
+        jLabel1.setText("TOP1 = "+TOP1);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(TOP1==-1){
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+        }
+        jTable1.setValueAt("", ((size-1)-TOP1), 0);
+        POP();
+        //clearDatainStack();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
+        UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 16));
         java.awt.EventQueue.invokeLater(() -> new Create().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }
