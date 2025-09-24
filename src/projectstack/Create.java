@@ -73,6 +73,7 @@ public class Create extends javax.swing.JFrame {
     }
     public Create() {
         initComponents();
+         this.getContentPane().setBackground(new Color(98, 149, 150));
         jTable1.setRowHeight(30);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
         jTable1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 18));
@@ -123,6 +124,7 @@ public class Create extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -304,6 +306,7 @@ public class Create extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 51));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/s1 (3).png"))); // NOI18N
 
+        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButton2.setText("PUSH");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,6 +314,7 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
         jButton3.setText("POP");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,10 +322,21 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Reset");
+        jButton1.setBackground(new java.awt.Color(102, 255, 102));
+        jButton1.setFont(new java.awt.Font("Tekton Pro Ext", 1, 14)); // NOI18N
+        jButton1.setText("Build STACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setBackground(new java.awt.Color(255, 255, 153));
+        jButton10.setFont(new java.awt.Font("Tekton Pro", 1, 18)); // NOI18N
+        jButton10.setText("Reverse");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -338,10 +353,11 @@ public class Create extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -359,7 +375,9 @@ public class Create extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(96, 96, 96)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -373,8 +391,9 @@ public class Create extends javax.swing.JFrame {
        if(inputStr!=null){
            input = Integer.parseInt(inputStr);
            if(input <1 || input >7){
-                JOptionPane.showMessageDialog(null, "ระบุตัวเลข 1-7 ค่าา ");
                 System.out.println("Pls take number from 1-7 for stack");
+                JOptionPane.showMessageDialog(null, "ระบุตัวเลข 1-7 ค่าา ");
+                
                  return;
            }
            DefaultTableModel model1 = new DefaultTableModel(new Object[]{"STACK1"}, 0);
@@ -411,14 +430,16 @@ public class Create extends javax.swing.JFrame {
         int value = Integer.parseInt(inputStr);
         if(TOP1!=-1){
             if(value>=STACK1[TOP1]){
-                JOptionPane.showMessageDialog(null, "กรุณาใส่เลขที่น้อยลงกว่าเดิม ");
                 System.out.println("Pls input lower number");
+                JOptionPane.showMessageDialog(null, "กรุณาใส่เลขที่น้อยลงกว่าเดิม ");
+               
                 return;
             }
         }
         if (TOP1 == MAXSTK1-1) {
-            JOptionPane.showMessageDialog(null, "STACK เต็มค่ะ ");
             System.out.println("Stack full");
+            JOptionPane.showMessageDialog(null, "STACK เต็มค่ะ ");
+            
             return;
         }
         PUSH(value);
@@ -432,8 +453,8 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(TOP1==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         jTable1.setValueAt("", ((size-1)-TOP1), 0);
@@ -443,8 +464,8 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if(TOP1==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP1;
@@ -466,8 +487,8 @@ jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if(TOP1==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP1;
@@ -489,8 +510,8 @@ jLabel4.setText("TOP3 = "+TOP3);
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if(TOP2==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP2;
@@ -512,8 +533,8 @@ jLabel3.setText("TOP2 = "+TOP2);
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         if(TOP2==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP2;
@@ -535,8 +556,8 @@ jLabel4.setText("TOP3 = "+TOP3);
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if(TOP3==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP3;
@@ -558,8 +579,8 @@ jLabel4.setText("TOP3 = "+TOP3);
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if(TOP3==-1){
-                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
         int K=TOP3;
@@ -579,6 +600,50 @@ jLabel3.setText("TOP2 = "+TOP2);
 jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        if(TOP1==-1 && TOP2==-1 && TOP3==-1){
+                System.out.println("Stack empty");
+                JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
+                return;
+        }else if(TOP1==-1){
+                System.out.println("Pls move data come back to STACK1");
+                JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
+                return;
+        }
+        int K=TOP1;
+        for(int i=0;i<=K;i++){
+            TOP2++;
+            STACK2[TOP2]=STACK1[TOP1];
+            jTable1.setValueAt("", ((size-1)-TOP1), 0);
+            TOP1--;
+        }
+        K=TOP2;
+        for(int i=0;i<=K;i++){
+            TOP3++;
+            STACK3[TOP3]=STACK2[TOP2];
+            jTable2.setValueAt("", ((size-1)-TOP2), 0);
+            TOP2--;
+        }
+        K=TOP3;
+        for(int i=0;i<=K;i++){
+            TOP1++;
+            STACK1[TOP1]=STACK3[TOP3];
+            jTable3.setValueAt("", ((size-1)-TOP3), 0);
+            TOP3--;
+        }
+        showDatainStack();
+        showDatainStack2();
+        showDatainStack3();
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+System.out.println("Reverse Number");
+        jLabel1.setText("TOP1 = "+TOP1);
+          jLabel3.setText("TOP2 = "+TOP2);
+        jLabel4.setText("TOP3 = "+TOP3);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -590,6 +655,7 @@ jLabel4.setText("TOP3 = "+TOP3);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
