@@ -268,7 +268,7 @@ public class Create extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(90, Short.MAX_VALUE))))
+                        .addContainerGap(87, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,6 +460,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         System.out.println("Move data from STACK1 to STACK2");
+        jLabel1.setText("TOP1 = "+TOP1);
+        jLabel3.setText("TOP2 = "+TOP2);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -481,6 +483,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK1 to STACK3");
+jLabel1.setText("TOP1 = "+TOP1);
+jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -502,6 +506,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK2 to STACK1");
+jLabel1.setText("TOP1 = "+TOP1);
+jLabel3.setText("TOP2 = "+TOP2);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -523,6 +529,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK2 to STACK3");
+jLabel3.setText("TOP2 = "+TOP2);
+jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -544,6 +552,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK3 to STACK1");
+jLabel1.setText("TOP1 = "+TOP1);
+jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -565,6 +575,8 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK3 to STACK2");
+jLabel3.setText("TOP2 = "+TOP2);
+jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
