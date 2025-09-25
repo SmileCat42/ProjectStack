@@ -26,7 +26,8 @@ public class Create2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create2.class.getName());
     
-       /* public  void PUSH(int item) {
+       /*----------------------
+    public  void PUSH(int item) {
         if (TOP1 == MAXSTK1-1) {
             System.out.println("OVERFLOW");
         } else {
