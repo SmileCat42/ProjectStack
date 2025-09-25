@@ -14,16 +14,18 @@ import javax.swing.table.JTableHeader;
 import java.util.Stack;
 
 public class Create extends javax.swing.JFrame {
+    DefaultTableModel model1, model2, model3;
     
     int size = 1;
-    int TOP1 = -1, MAXSTK1, ITEM;
+    int MAXSTK1, ITEM;
     Stack<Integer> STACK1 = new Stack<>();
     int TOP2 = -1, MAXSTK2;
     Stack<Integer> STACK2 = new Stack<>();
     int TOP3 = -1, MAXSTK3;
     Stack<Integer> STACK3 = new Stack<>();
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create.class.getName());
-
+    
        /* public  void PUSH(int item) {
         if (TOP1 == MAXSTK1-1) {
             System.out.println("OVERFLOW");
@@ -50,7 +52,7 @@ public class Create extends javax.swing.JFrame {
         System.out.println();
         System.out.print("Stack1:");
      //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
-        for (int i = 0; i <= STACK1.size(); i++) {
+        for (int i = 0; i <= STACK1.size()-1; i++) {
             System.out.print(STACK1.get(i) + ",");
             jTable1.setValueAt(STACK1.get(i), ((STACK1.size()-1)-i), 0);
         }
@@ -65,7 +67,7 @@ public class Create extends javax.swing.JFrame {
         System.out.println();
         System.out.print("Stack2:");
      //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
-        for (int i = 0; i <= TOP2; i++) {
+        for (int i = 0; i <= STACK2.size()-1; i++) {
             System.out.print(STACK2.get(i) + ",");
             jTable2.setValueAt(STACK2.get(i), ((STACK2.size()-1)-i), 0);
         }
@@ -74,7 +76,7 @@ public class Create extends javax.swing.JFrame {
         System.out.println();
         System.out.print("Stack3:");
      //   for (int i = 0; i <= TOP; i++){ jTable1.setValueAt("", (9-TOP), 0); }
-        for (int i = 0; i <= TOP3; i++) {
+        for (int i = 0; i <= STACK3.size()-1; i++) {
             System.out.print(STACK3.get(i) + ",");
             jTable3.setValueAt(STACK3.get(i), ((STACK3.size()-1)-i), 0);
         }
@@ -82,6 +84,12 @@ public class Create extends javax.swing.JFrame {
          
     public Create() {
         initComponents();
+        model1 = new DefaultTableModel(new Object[]{"STACK1"}, 0);
+                 jTable1.setModel(model1);
+                  model2 = new DefaultTableModel(new Object[]{"STACK2"}, 0);
+                 jTable2.setModel(model2);
+                  model3 = new DefaultTableModel(new Object[]{"STACK3"}, 0);
+                 jTable3.setModel(model3);
          this.getContentPane().setBackground(new Color(98, 149, 150));
         jTable1.setRowHeight(30);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -432,48 +440,34 @@ public class Create extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showInputDialog(null, "version นี้ ไม่ต้อง input ขนาด\nท่านสามารถ PUSH ได้เลยค่ะ");
+        JOptionPane.showMessageDialog(this, "version นี้ท่านไม่ต้อง input ขนาด\nสามารถ push ข้อมูลได้เลยค่ะ");
         System.out.println("You no longer need to input the size of the stack. You can just push elements directly");
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลขเพื่อใส่ค่าลงไป");
         System.out.println("Pls take number push in stack");
         int value = Integer.parseInt(inputStr);
-        if(TOP1!=-1){
-            if(value>=STACK1.get(TOP1)){
+        if(STACK1.size()!=0){
+            if(value>=STACK1.get(STACK1.size()-1)){
                 System.out.println("Pls input lower number");
                 JOptionPane.showMessageDialog(null, "กรุณาใส่เลขที่น้อยลงกว่าเดิม ");
                
                 return;
             }
         }
-        if (TOP1 == MAXSTK1-1) {
-            System.out.println("Stack full");
-            JOptionPane.showMessageDialog(null, "STACK เต็มค่ะ ");
-            
-            return;
-        }
-        STACK1.push(value);
- 
-                   DefaultTableModel model1 = new DefaultTableModel(new Object[]{"STACK1"}, 0);
-                 jTable1.setModel(model1);
-                  DefaultTableModel model2 = new DefaultTableModel(new Object[]{"STACK2"}, 0);
-                 jTable2.setModel(model2);
-                  DefaultTableModel model3 = new DefaultTableModel(new Object[]{"STACK3"}, 0);
-                 jTable3.setModel(model3);
-                    model1.addRow(new Object[]{""});
+                   
+                    model1.addRow(new Object[]{value});
                     model2.addRow(new Object[]{""});
                     model3.addRow(new Object[]{""});
-        
+                    
+               STACK1.push(value);
         jLabel5.setText("MAXSTACK1 = "+STACK1.size());
         showDatainStack();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
-jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -482,7 +476,7 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        jTable1.setValueAt("", ((size-1)-TOP1), 0);
+        jTable1.setValueAt("", 0, 0);
         STACK1.pop();
         jLabel5.setText("MAXSTACK = "+STACK1.size());
         //clearDatainStack();
@@ -496,10 +490,12 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         }
         int K=STACK1.size();
         int value;
+        int row = jTable1.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
             value=STACK1.pop();
             STACK2.push(value);
-            jTable1.setValueAt("", ((K-1)-TOP1), 0);
+            jTable1.setValueAt("",row , 0);
+            row--;
         }
         showDatainStack2();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -517,13 +513,14 @@ jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        int K=TOP1;
+        int K=STACK1.size();
         int value;
+        int row = jTable1.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
-                jTable1.setValueAt("", ((K-1)-TOP1), 0);
                 value=STACK1.pop();
                 STACK3.push(value);
-                
+                jTable1.setValueAt("",row , 0);
+                row--;
         }
         showDatainStack3();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -531,8 +528,6 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK1 to STACK3");
-jLabel1.setText("TOP1 = "+TOP1);
-jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -541,12 +536,14 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        int K=TOP2;
-        for(int i=0;i<=K;i++){
-            TOP1++;
-            STACK1[TOP1]=STACK2[TOP2];
-            jTable2.setValueAt("", ((size-1)-TOP2), 0);
-            TOP2--;
+        int K=STACK2.size();
+        int value;
+        int row = jTable2.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+                value=STACK2.pop();
+                STACK1.push(value);
+                jTable2.setValueAt("",row , 0);
+                row--;
         }
         showDatainStack();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -554,8 +551,6 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK2 to STACK1");
-jLabel1.setText("TOP1 = "+TOP1);
-jLabel3.setText("TOP2 = "+TOP2);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -564,12 +559,14 @@ jLabel3.setText("TOP2 = "+TOP2);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        int K=TOP2;
-        for(int i=0;i<=K;i++){
-            TOP3++;
-            STACK3[TOP3]=STACK2[TOP2];
-            jTable2.setValueAt("", ((size-1)-TOP2), 0);
-            TOP2--;
+        int K=STACK2.size();
+        int value;
+        int row = jTable2.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+                value=STACK2.pop();
+                STACK3.push(value);
+                jTable2.setValueAt("",row, 0);
+                row--;
         }
         showDatainStack3();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -577,8 +574,6 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK2 to STACK3");
-jLabel3.setText("TOP2 = "+TOP2);
-jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -587,12 +582,14 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        int K=TOP3;
-        for(int i=0;i<=K;i++){
-            TOP1++;
-            STACK1[TOP1]=STACK3[TOP3];
-            jTable3.setValueAt("", ((size-1)-TOP3), 0);
-            TOP3--;
+       int K=STACK3.size();
+        int value;
+        int row = jTable3.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+                value=STACK3.pop();
+                STACK1.push(value);
+                jTable3.setValueAt("",row , 0);
+                row--;
         }
         showDatainStack();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -600,8 +597,6 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK3 to STACK1");
-jLabel1.setText("TOP1 = "+TOP1);
-jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -610,12 +605,14 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
-        int K=TOP3;
-        for(int i=0;i<=K;i++){
-            TOP2++;
-            STACK2[TOP2]=STACK3[TOP3];
-            jTable3.setValueAt("", ((size-1)-TOP3), 0);
-            TOP3--;
+        int K=STACK3.size();
+        int value;
+        int row = jTable3.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+                value=STACK3.pop();
+                STACK2.push(value);
+                jTable3.setValueAt("",row , 0);
+                row--;
         }
         showDatainStack2();
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -623,40 +620,42 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Move data from STACK3 to STACK2");
-jLabel3.setText("TOP2 = "+TOP2);
-jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        if(TOP1==-1 && TOP2==-1 && TOP3==-1){
+        if(STACK1.isEmpty() && STACK2.isEmpty() && STACK3.isEmpty()){
                 System.out.println("Stack empty");
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
-        }else if(TOP1==-1){
+        }else if(STACK1.isEmpty()){
                 System.out.println("Pls move data come back to STACK1");
                 JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
                 return;
         }
-        int K=TOP1;
-        for(int i=0;i<=K;i++){
-            TOP2++;
-            STACK2[TOP2]=STACK1[TOP1];
-            jTable1.setValueAt("", ((size-1)-TOP1), 0);
-            TOP1--;
+        int K=STACK1.size();
+        int value;
+        int row = jTable1.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+            value=STACK1.pop();
+            STACK2.push(value);
+            jTable1.setValueAt("", row, 0);
+            row--;
         }
-        K=TOP2;
-        for(int i=0;i<=K;i++){
-            TOP3++;
-            STACK3[TOP3]=STACK2[TOP2];
-            jTable2.setValueAt("", ((size-1)-TOP2), 0);
-            TOP2--;
+        K=STACK2.size();
+        row = jTable2.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+            value=STACK2.pop();
+            STACK3.push(value);
+            jTable2.setValueAt("", row, 0);
+            row--;
         }
-        K=TOP3;
-        for(int i=0;i<=K;i++){
-            TOP1++;
-            STACK1[TOP1]=STACK3[TOP3];
-            jTable3.setValueAt("", ((size-1)-TOP3), 0);
-            TOP3--;
+        K=STACK3.size();
+        row = jTable3.getRowCount() - 1;
+        for(int i=0;i<=K-1;i++){
+            value=STACK3.pop();
+            STACK1.push(value);
+            jTable3.setValueAt("", row, 0);
+            row--;
         }
         showDatainStack();
         showDatainStack2();
@@ -666,9 +665,6 @@ centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
 jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Reverse Number");
-        jLabel1.setText("TOP1 = "+TOP1);
-          jLabel3.setText("TOP2 = "+TOP2);
-        jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
