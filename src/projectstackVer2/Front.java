@@ -103,7 +103,7 @@ public class Front extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            Create move = new Create();  // สร้างหน้าฟอร์มใหม่
+            Create2 move = new Create2();  // สร้างหน้าฟอร์มใหม่
             move.setVisible(true);     // แสดง Form2
             this.dispose(); 
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -13,7 +13,7 @@ import javax.swing.table.JTableHeader;
 
 import java.util.Stack;
 
-public class Create extends javax.swing.JFrame {
+public class Create2 extends javax.swing.JFrame {
     DefaultTableModel model1, model2, model3;
     
     int size = 1;
@@ -24,7 +24,7 @@ public class Create extends javax.swing.JFrame {
     int TOP3 = -1, MAXSTK3;
     Stack<Integer> STACK3 = new Stack<>();
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create2.class.getName());
     
        /* public  void PUSH(int item) {
         if (TOP1 == MAXSTK1-1) {
@@ -82,7 +82,7 @@ public class Create extends javax.swing.JFrame {
         }
     }
          
-    public Create() {
+    public Create2() {
         initComponents();
         model1 = new DefaultTableModel(new Object[]{"STACK1"}, 0);
                  jTable1.setModel(model1);
@@ -366,7 +366,7 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Tekton Pro Ext", 1, 14)); // NOI18N
         jButton1.setText("Build STACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -679,7 +679,7 @@ System.out.println("Reverse Number");
     public static void main(String args[]) {
         UIManager.put("OptionPane.messageFont", new Font("Tahoma", Font.PLAIN, 16));
         UIManager.put("OptionPane.buttonFont", new Font("Tahoma", Font.PLAIN, 16));
-        java.awt.EventQueue.invokeLater(() -> new Create().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Create2().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
