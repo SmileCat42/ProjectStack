@@ -73,6 +73,26 @@ public class Create extends javax.swing.JFrame {
             jTable3.setValueAt(STACK3[i], ((size-1)-i), 0);
         }
     }
+         public int checkValue(Object value) {
+    int res=-1;
+    if (value instanceof String) {
+        String str = (String) value;
+        
+        try {
+            // ถ้าแปลงเป็นเลขได้ แสดงว่าไม่ใช่ pure string
+            res=Integer.parseInt(str);
+            System.out.println("This is a number: " + str);
+        } catch (NumberFormatException e) {
+            // ถ้าแปลงไม่ได้ = เป็นข้อความ
+            System.out.println("This is a String: " + str);
+            return res; // ออกจากฟังก์ชัน
+        }
+    } else {
+        // กรณีเป็น object อื่นๆ
+        System.out.println("Not a string: " + value);
+    }
+    return res;
+}
          
     public Create() {
         initComponents();
@@ -100,6 +120,13 @@ public class Create extends javax.swing.JFrame {
         jTable2.setBackground(new Color(173, 253, 162));    
         jTable3.setBackground(new Color(177, 252, 250));
         
+        jButton4.setBackground(new Color(173, 253, 162));  
+         jButton5.setBackground(new Color(177, 252, 250));
+         jButton6.setBackground(new Color(255, 192, 203));
+         jButton7.setBackground(new Color(177, 252, 250));
+         jButton8.setBackground(new Color(255, 192, 203));
+        jButton9.setBackground(new Color(173, 253, 162));    
+       
 
     }
 
@@ -221,6 +248,7 @@ public class Create extends javax.swing.JFrame {
         jLabel7.setText("MAXSTACK = ");
 
         jButton4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 153, 0));
         jButton4.setText("m2");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,6 +257,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         jButton5.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("m3");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +266,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 0, 0));
         jButton6.setText("m1");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +275,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 0, 255));
         jButton7.setText("m3");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,6 +284,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         jButton8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 0, 0));
         jButton8.setText("m1");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +293,7 @@ public class Create extends javax.swing.JFrame {
         });
 
         jButton9.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(0, 153, 0));
         jButton9.setText("m2");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,6 +531,12 @@ public class Create extends javax.swing.JFrame {
         String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลข จำนวนช่องของ Stack\n(ระบุ 1-7 ช่อง)");
         System.out.println("Pls take number from 1-7 for stack");
         int input;
+        input=checkValue(inputStr);
+        if(input==-1){
+            System.out.println("Pls take number not string");
+             JOptionPane.showMessageDialog(null, "กรอกตัวเลขเท่านั้นค่ะ ");
+             return;
+        }
        if(inputStr!=null){
            input = Integer.parseInt(inputStr);
            if(input <1 || input >7){
@@ -537,11 +576,29 @@ public class Create extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลขเพื่อใส่ค่าลงไป");
         System.out.println("Pls take number push in stack");
-        int value = Integer.parseInt(inputStr);
+        int value;
+        value=checkValue(inputStr);
+        if(value==-1){
+            System.out.println("Pls take number not string");
+             JOptionPane.showMessageDialog(null, "กรอกตัวเลขเท่านั้นค่ะ ");
+             return;
+        }
+        if(TOP1==-1){
+        if(value<size || value>100){
+            System.out.println("Please enter the minimum number between "+size+"-100");
+             JOptionPane.showMessageDialog(null, "ครั้งแรกแนะนำให้กรอกตัวเลขตั้งแต่ "+size+"-100 ค่ะ");
+             return;
+        }}
         if(TOP1!=-1){
             if(value>=STACK1[TOP1]){
                 System.out.println("Pls input lower number");
                 JOptionPane.showMessageDialog(null, "กรุณาใส่เลขที่น้อยลงกว่าเดิม ");
+               
+                return;
+            }
+            if(value< size-(TOP1+1)){
+                System.out.println("Enter a positive integer (with space for later values).");
+                JOptionPane.showMessageDialog(null, "รบกวนใส่เลขจำนวนเต็มบวก และเผื่อเลขให้ตัวหลังๆด้วยค่ะ ");
                
                 return;
             }
@@ -834,7 +891,7 @@ jLabel1.setText("TOP1 = "+TOP1);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
-jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+jTable3.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Pop data from STACK2 to STACK3");
 jLabel3.setText("TOP2 = "+TOP2);
 jLabel4.setText("TOP3 = "+TOP3);
@@ -884,7 +941,7 @@ jLabel4.setText("TOP3 = "+TOP3);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
 centerRenderer.setVerticalAlignment(SwingConstants.CENTER);
-jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
 System.out.println("Pop data from STACK2 to STACK1");
 jLabel3.setText("TOP2 = "+TOP2);
 jLabel1.setText("TOP1 = "+TOP1);
