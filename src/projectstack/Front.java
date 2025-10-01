@@ -33,14 +33,12 @@ public class Front extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/front (1).jpg"))); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Sriracha", 1, 28)); // NOI18N
         jButton1.setText("START");
@@ -49,6 +47,8 @@ public class Front extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/front (1).jpg"))); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Sriracha", 0, 12)); // NOI18N
         jButton2.setText("Credit");

@@ -18,6 +18,8 @@ public class Create extends javax.swing.JFrame {
     int TOP3 = -1, MAXSTK3, STACK3[];
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create.class.getName());
 
+
+
         public  void PUSH(int item) {
         if (TOP1 == MAXSTK1-1) {
             System.out.println("OVERFLOW");
@@ -28,6 +30,7 @@ public class Create extends javax.swing.JFrame {
   //      jTable1.setValueAt(STACK[TOP], (9-TOP), 0);
         }
     }
+       
 //------------------------------------
     public  void POP(){
     if(TOP1==-1)
@@ -96,9 +99,24 @@ public class Create extends javax.swing.JFrame {
          
     public Create() {
         initComponents();
-        
-         this.getContentPane().setBackground(new Color(98, 149, 150));
-         
+        ImageIcon icon = new ImageIcon(getClass().getResource("/image/blackground.png"));
+
+Image img = icon.getImage();
+Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+
+// ใส่ลง JLabel
+ImageIcon scaledIcon = new ImageIcon(newImg);
+JLabel bgLabel = new JLabel(scaledIcon);
+
+// ขยายเต็มเฟรม
+bgLabel.setBounds(0, 0, this.getWidth(), this.getHeight());
+
+// ใส่ลง JLayeredPane
+jLayeredPane1.add(bgLabel, JLayeredPane.DEFAULT_LAYER);
+this.setSize(jLayeredPane1.getPreferredSize()); 
+    this.setResizable(false); // ไม่ให้ยืด
+    this.setLocationRelativeTo(null); // จอกลาง
+    
         jTable1.setRowHeight(30);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
         jTable1.setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 18));
@@ -139,6 +157,11 @@ public class Create extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jButton2 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -177,14 +200,39 @@ public class Create extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jButton2.setText("PUSH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setBackground(new java.awt.Color(255, 255, 153));
+        jButton10.setFont(new java.awt.Font("Tekton Pro", 1, 18)); // NOI18N
+        jButton10.setText("Reverse");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        jButton3.setText("POP");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 51));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 51));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/s4.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -428,29 +476,8 @@ public class Create extends javax.swing.JFrame {
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 51));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 51));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/s1 (3).png"))); // NOI18N
-
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton2.setText("PUSH");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton3.setText("POP");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setFont(new java.awt.Font("Tekton Pro Ext", 1, 14)); // NOI18N
@@ -461,67 +488,66 @@ public class Create extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(255, 255, 153));
-        jButton10.setFont(new java.awt.Font("Tekton Pro", 1, 18)); // NOI18N
-        jButton10.setText("Reverse");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
+        jLayeredPane1.setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exit2 (1).png"))); // NOI18N
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(408, 408, 408))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(37, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))))
+                .addComponent(jLayeredPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(547, Short.MAX_VALUE))
         );
 
         pack();
@@ -627,6 +653,7 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         jTable1.setValueAt("", ((size-1)-TOP1), 0);
         POP();
         //clearDatainStack();
+        jLabel1.setText("TOP1 = "+TOP1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -638,6 +665,11 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         if(TOP2==size-1){
                 System.out.println("Stack2 full");
                 JOptionPane.showMessageDialog(null, "STACK2 เต็มค่ะ ");
+                return;
+        }
+        if( TOP1+1>size-(TOP2+1)){
+            System.out.println("Stack2 not enough");
+                JOptionPane.showMessageDialog(null, "STACK2 ไม่พอใส่ค่ะ ");
                 return;
         }
         int K=TOP1;
@@ -668,6 +700,11 @@ jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
                 JOptionPane.showMessageDialog(null, "STACK3 เต็มค่ะ ");
                 return;
         }
+        if( TOP1+1>size-(TOP3+1)){
+            System.out.println("Stack3 not enough");
+                JOptionPane.showMessageDialog(null, "STACK3 ไม่พอใส่ค่ะ ");
+                return;
+        }
         int K=TOP1;
         for(int i=0;i<=K;i++){
             TOP3++;
@@ -694,6 +731,11 @@ jLabel4.setText("TOP3 = "+TOP3);
         if(TOP1==size-1){
                 System.out.println("Stack1 full");
                 JOptionPane.showMessageDialog(null, "STACK1 เต็มค่ะ ");
+                return;
+        }
+        if( TOP2+1>size-(TOP1+1)){
+            System.out.println("Stack1 not enough");
+                JOptionPane.showMessageDialog(null, "STACK1 ไม่พอใส่ค่ะ ");
                 return;
         }
         int K=TOP2;
@@ -724,6 +766,11 @@ jLabel3.setText("TOP2 = "+TOP2);
                 JOptionPane.showMessageDialog(null, "STACK3 เต็มค่ะ ");
                 return;
         }
+        if( TOP2+1>size-(TOP3+1)){
+            System.out.println("Stack3 not enough");
+                JOptionPane.showMessageDialog(null, "STACK3 ไม่พอใส่ค่ะ ");
+                return;
+        }
         int K=TOP2;
         for(int i=0;i<=K;i++){
             TOP3++;
@@ -750,6 +797,11 @@ jLabel4.setText("TOP3 = "+TOP3);
         if(TOP1==size-1){
                 System.out.println("Stack1 full");
                 JOptionPane.showMessageDialog(null, "STACK1 เต็มค่ะ ");
+                return;
+        }
+        if( TOP3+1>size-(TOP1+1)){
+            System.out.println("Stack1 not enough");
+                JOptionPane.showMessageDialog(null, "STACK1 ไม่พอใส่ค่ะ ");
                 return;
         }
         int K=TOP3;
@@ -780,6 +832,11 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "STACK2 เต็มค่ะ ");
                 return;
         }
+        if( TOP3+1>size-(TOP2+1)){
+            System.out.println("Stack2 not enough");
+                JOptionPane.showMessageDialog(null, "STACK2 ไม่พอใส่ค่ะ ");
+                return;
+        }
         int K=TOP3;
         for(int i=0;i<=K;i++){
             TOP2++;
@@ -807,7 +864,12 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
                 return;
         }
-        int K=TOP1;
+        if(TOP2!=-1 && TOP3!=-1){
+            System.out.println("Pls clear STACK2 and STACK3 empty");
+                JOptionPane.showMessageDialog(null, "ทำ STACK2 และ STACK3 ให้ว่างก่อนค่ะ");
+                return;
+        }
+        int K=TOP1; 
         for(int i=0;i<=K;i++){
             TOP2++;
             STACK2[TOP2]=STACK1[TOP1];
@@ -840,12 +902,6 @@ System.out.println("Reverse Number");
           jLabel3.setText("TOP2 = "+TOP2);
         jLabel4.setText("TOP3 = "+TOP3);
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        Front move = new Front();  // สร้างหน้าฟอร์มใหม่
-            move.setVisible(true);     // แสดง Form2
-            this.dispose(); 
-    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         if(TOP1==-1){
@@ -959,7 +1015,6 @@ jLabel1.setText("TOP1 = "+TOP1);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
@@ -979,6 +1034,7 @@ jLabel1.setText("TOP1 = "+TOP1);
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
