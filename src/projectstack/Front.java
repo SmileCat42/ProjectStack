@@ -9,10 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- *
- * @author Windows10
- */
+
 public class Front extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Front.class.getName());

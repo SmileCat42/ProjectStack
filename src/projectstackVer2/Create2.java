@@ -113,7 +113,7 @@ public class Create2 extends javax.swing.JFrame {
         jTable2.setBackground(new Color(173, 253, 162));    
         jTable3.setBackground(new Color(177, 252, 250));
         
-
+        
     }
 
     /**
