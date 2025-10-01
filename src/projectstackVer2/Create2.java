@@ -26,6 +26,26 @@ public class Create2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create2.class.getName());
     
+             public int checkValue(Object value) {
+    int res=-1;
+    if (value instanceof String) {
+        String str = (String) value;
+        
+        try {
+            // ถ้าแปลงเป็นเลขได้ แสดงว่าไม่ใช่ pure string
+            res=Integer.parseInt(str);
+            System.out.println("This is a number: " + str);
+        } catch (NumberFormatException e) {
+            // ถ้าแปลงไม่ได้ = เป็นข้อความ
+            System.out.println("This is a String: " + str);
+            return res; // ออกจากฟังก์ชัน
+        }
+    } else {
+        // กรณีเป็น object อื่นๆ
+        System.out.println("Not a string: " + value);
+    }
+    return res;
+}
        /*----------------------
     public  void PUSH(int item) {
         if (TOP1 == MAXSTK1-1) {
@@ -448,7 +468,18 @@ public class Create2 extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลขเพื่อใส่ค่าลงไป");
         System.out.println("Pls take number push in stack");
-        int value = Integer.parseInt(inputStr);
+        int value=checkValue(inputStr);
+        if(value==-1){
+            System.out.println("Pls take number not string");
+             JOptionPane.showMessageDialog(null, "กรอกตัวเลขเท่านั้นค่ะ ");
+             return;
+        }
+        if(STACK1.size()==0){
+        if(value<5 || value>100){
+            System.out.println("Please enter the minimum number between 5-100");
+             JOptionPane.showMessageDialog(null, "ครั้งแรกแนะนำให้กรอกตัวเลขตั้งแต่ 5-100 ค่ะ");
+             return;
+        }}
         if(STACK1.size()!=0){
             if(value>=STACK1.get(STACK1.size()-1)){
                 System.out.println("Pls input lower number");
@@ -456,11 +487,14 @@ public class Create2 extends javax.swing.JFrame {
                
                 return;
             }
+            if(value<=0){
+                System.out.println("Please enter the number more than 0");
+             JOptionPane.showMessageDialog(null, "แนะนำให้กรอกด้วยเลขจำนวนเต็มบวกมากกว่า 0 ค่ะ");
+             return;
+            }
         }
                    
                     model1.addRow(new Object[]{value});
-                    model2.addRow(new Object[]{""});
-                    model3.addRow(new Object[]{""});
                     
                STACK1.push(value);
         jLabel5.setText("MAXSTACK1 = "+STACK1.size());
@@ -493,9 +527,13 @@ public class Create2 extends javax.swing.JFrame {
         int value;
         int row = jTable1.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+            
+                                model2.addRow(new Object[]{""});
+                                
             value=STACK1.pop();
             STACK2.push(value);
             jTable1.setValueAt("",row , 0);
+            model1.removeRow(row);
             row--;
         }
         showDatainStack2();
@@ -518,9 +556,11 @@ jTable2.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         int value;
         int row = jTable1.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+                model3.addRow(new Object[]{""});
                 value=STACK1.pop();
                 STACK3.push(value);
                 jTable1.setValueAt("",row , 0);
+                model1.removeRow(row);
                 row--;
         }
         showDatainStack3();
@@ -541,9 +581,11 @@ System.out.println("Move data from STACK1 to STACK3");
         int value;
         int row = jTable2.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+                model1.addRow(new Object[]{""});
                 value=STACK2.pop();
                 STACK1.push(value);
                 jTable2.setValueAt("",row , 0);
+                model2.removeRow(row);
                 row--;
         }
         showDatainStack();
@@ -564,9 +606,11 @@ System.out.println("Move data from STACK2 to STACK1");
         int value;
         int row = jTable2.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+                model3.addRow(new Object[]{""});
                 value=STACK2.pop();
                 STACK3.push(value);
                 jTable2.setValueAt("",row, 0);
+                model2.removeRow(row);
                 row--;
         }
         showDatainStack3();
@@ -587,9 +631,11 @@ System.out.println("Move data from STACK2 to STACK3");
         int value;
         int row = jTable3.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+                model1.addRow(new Object[]{""});
                 value=STACK3.pop();
                 STACK1.push(value);
                 jTable3.setValueAt("",row , 0);
+                model3.removeRow(row);
                 row--;
         }
         showDatainStack();
@@ -610,9 +656,11 @@ System.out.println("Move data from STACK3 to STACK1");
         int value;
         int row = jTable3.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+                model2.addRow(new Object[]{""});
                 value=STACK3.pop();
                 STACK2.push(value);
                 jTable3.setValueAt("",row , 0);
+                model3.removeRow(row);
                 row--;
         }
         showDatainStack2();
@@ -628,34 +676,46 @@ System.out.println("Move data from STACK3 to STACK2");
                 System.out.println("Stack empty");
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
-        }else if(STACK1.isEmpty()){
+        }
+        if(STACK1.isEmpty()){
                 System.out.println("Pls move data come back to STACK1");
                 JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
+                return;
+        }
+         if(!STACK2.isEmpty() || !STACK3.isEmpty()){
+            System.out.println("Pls clear STACK2 and STACK3 empty");
+                JOptionPane.showMessageDialog(null, "ทำ STACK2 และ STACK3 ให้ว่างก่อนค่ะ");
                 return;
         }
         int K=STACK1.size();
         int value;
         int row = jTable1.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+            model2.addRow(new Object[]{""});
             value=STACK1.pop();
             STACK2.push(value);
             jTable1.setValueAt("", row, 0);
+            model1.removeRow(row);
             row--;
         }
         K=STACK2.size();
         row = jTable2.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+            model3.addRow(new Object[]{""});
             value=STACK2.pop();
             STACK3.push(value);
             jTable2.setValueAt("", row, 0);
+            model2.removeRow(row);
             row--;
         }
         K=STACK3.size();
         row = jTable3.getRowCount() - 1;
         for(int i=0;i<=K-1;i++){
+            model1.addRow(new Object[]{""});
             value=STACK3.pop();
             STACK1.push(value);
             jTable3.setValueAt("", row, 0);
+            model3.removeRow(row);
             row--;
         }
         showDatainStack();

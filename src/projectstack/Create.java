@@ -8,7 +8,7 @@ import java.awt.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.JPanel;
-import javax.swing.table.JTableHeader;
+
 
 public class Create extends javax.swing.JFrame {
     
@@ -864,7 +864,7 @@ jLabel4.setText("TOP3 = "+TOP3);
                 JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
                 return;
         }
-        if(TOP2!=-1 && TOP3!=-1){
+        if(TOP2!=-1 || TOP3!=-1){
             System.out.println("Pls clear STACK2 and STACK3 empty");
                 JOptionPane.showMessageDialog(null, "ทำ STACK2 และ STACK3 ให้ว่างก่อนค่ะ");
                 return;
