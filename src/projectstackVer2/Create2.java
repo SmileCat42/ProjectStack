@@ -507,11 +507,18 @@ public class Create2 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if(STACK1.isEmpty()){
+                if(!STACK2.isEmpty() || !STACK3.isEmpty()){
+                        System.out.println("Move data come back to STACK1 for pop");
+                        JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ ");
+                        return;
+                }
                 System.out.println("Stack empty");
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
+
         jTable1.setValueAt("", 0, 0);
+        model1.removeRow(0);
         STACK1.pop();
         jLabel5.setText("MAXSTACK = "+STACK1.size());
         //clearDatainStack();

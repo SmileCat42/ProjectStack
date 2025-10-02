@@ -645,8 +645,14 @@ jTable1.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
         if(TOP1==-1){
-                System.out.println("Stack empty");
+            if(TOP2!=-1 || TOP3!=-1){
+                    System.out.println("Move data come back to STACK1 for pop");
+                JOptionPane.showMessageDialog(null, "ย้ายข้อมูลกลับมาที่ STACK1 ก่อนค่ะ");
+                return;
+            }
+            System.out.println("Stack empty");
                 JOptionPane.showMessageDialog(null, "STACK ว่างค่ะ ");
                 return;
         }
