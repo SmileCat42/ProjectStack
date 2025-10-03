@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class Create extends javax.swing.JFrame {
     
     int size = 1;
-    int TOP1 = -1, MAXSTK1, STACK1[]= new int[size], ITEM;
+    int TOP1 = -1, MAXSTK1=0, STACK1[]= new int[size], ITEM;
     int TOP2 = -1, MAXSTK2, STACK2[];
     int TOP3 = -1, MAXSTK3, STACK3[];
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Create.class.getName());
@@ -602,6 +602,11 @@ this.setSize(jLayeredPane1.getPreferredSize());
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String inputStr = JOptionPane.showInputDialog(null, "กรอกตัวเลขเพื่อใส่ค่าลงไป");
         System.out.println("Pls take number push in stack");
+        if(MAXSTK1==0){
+            System.out.println("Pls build Stack first");
+             JOptionPane.showMessageDialog(null, "กรุณาสร้าง STACK ก่อนค่ะ");
+             return;
+        }
         int value;
         value=checkValue(inputStr);
         if(value==-1){
