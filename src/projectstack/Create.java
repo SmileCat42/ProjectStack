@@ -100,6 +100,7 @@ public class Create extends javax.swing.JFrame {
     public Create() {
         initComponents();
         ImageIcon icon = new ImageIcon(getClass().getResource("/image/blackground.png"));
+        
 
 Image img = icon.getImage();
 Image newImg = img.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
